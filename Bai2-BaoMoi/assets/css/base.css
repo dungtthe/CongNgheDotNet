@@ -3,6 +3,7 @@
 
 :root {
     --color-one: #2fa1b3;
+    --color-text-main: #292929;
     --color-text1: #F1F2F2;
     --color-text2: #948f8f;
     --color-text3: #fff;
@@ -13,6 +14,7 @@
 body {
     font-family: var(--font);
     background-color: #ffff;
+    color: var(--color-text-main);
 }
 
 

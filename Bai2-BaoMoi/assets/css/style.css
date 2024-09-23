@@ -177,3 +177,116 @@
 
 /* end header-menu */
 /* End Header */
+
+
+
+/* Content */
+.content {
+    padding-top: 15px;
+}
+
+
+.content .inner-wrap-content {
+    display: flex;
+    justify-content: space-between;
+    /* Khoảng trắng giữa left và right */
+    gap: 1.5%;
+}
+
+
+/* content-left */
+.content .content-left {
+    /* background-color: red; */
+    height: 500px;
+    width: 59%;
+}
+
+
+/* section-one */
+.content .content-left .section-one .inner-image {
+    margin-bottom: 10px;
+
+}
+
+.content .content-left .section-one .inner-image img {
+    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 9/5;
+}
+
+.content .content-left .section-one .inner-image:hover img {
+    transform: scale(1.1);
+    transition: 0.6;
+    /* hiệu ứng phóng to chậm lại */
+    transition-duration: 0.8s;
+}
+
+.content .content-left .section-one .inner-image:hover {
+    overflow: hidden;
+}
+
+.content .content-left .section-one .inner-content .inner-title {
+    font-size: 33px;
+    font-weight: 500;
+}
+
+.content .content-left .section-one .inner-content .inner-link img {
+    height: 24px;
+}
+
+.content .content-left .section-one .inner-content .inner-link {
+    display: flex;
+    align-items: center;
+    margin-top: -27px;
+}
+
+.content .content-left .section-one .inner-content .inner-link .item {
+    margin-right: 15px;
+}
+
+.content .content-left .section-one .inner-content .inner-link .item {
+    color: var(--color-text2);
+}
+
+.content .content-left .section-one .inner-clock {
+    visibility: hidden;
+}
+
+.content .content-left .section-one:hover .inner-image {
+    cursor: pointer;
+}
+
+.content .content-left .section-one:hover .inner-content h2 {
+    color: var(--color-one);
+    cursor: pointer;
+}
+
+.content .content-left .section-one:hover .inner-clock {
+    visibility: visible;
+}
+
+.content .content-left .section-one .inner-wrap .inner-link a:hover {
+    color: var(--color-one);
+    cursor: pointer;
+}
+
+.content .content-left .section-one .inner-wrap .inner-link img:hover {
+    cursor: pointer;
+}
+
+/* end section-one */
+
+/* end content-left */
+
+
+/* content-right */
+.content .content-right {
+    background-color: blue;
+    height: 500px;
+    width: 39.5%;
+}
+
+
+
+/* end content-right */
+/* End Content */

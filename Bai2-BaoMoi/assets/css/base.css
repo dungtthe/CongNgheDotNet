@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+:root {
+    --color-one: #2fa1b3;
+    --color-text1: #F1F2F2;
+    --color-text2: #948f8f;
+    --color-text3: #fff;
+    --color-active: #2B94A5;
+    font: "DM Sans", sans-serif;
+}
+
+body {
+    font-family: var(--font);
+    background-color: #ffff;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    /* do chiều rộng được set cứng nên có thể dùng cái này để container căn giữa theo chiều ngang */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Nếu độ rộng của màn hình nhỏ hơn hoặc bằng 1200px, phần tử với lớp container sẽ có max-width là 960px. */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}

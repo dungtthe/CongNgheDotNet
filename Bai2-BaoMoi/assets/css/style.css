@@ -321,17 +321,17 @@
 .content .content-left .section-three .inner-box {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .content .content-left .section-three .inner-box .inner-image {
+    width: 25%;
     margin-right: 2%;
-    width: 30%;
 }
 
 .content .content-left .section-three .inner-box .inner-content {
-    width: 68%;
+    width: 73%;
 }
 
 .content .content-left .section-three .inner-box .inner-image img {
@@ -341,12 +341,132 @@
 
 /* end section-three */
 
+
+/* section-four */
+.content .content-left .section-four .inner-content-section {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #db562b;
+}
+
+.content .content-left .section-four .inner-content-section:hover {
+    cursor: pointer;
+    color: var(--color-one);
+}
+
+.content .content-left .section-four .inner-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.content .content-left .section-four .inner-box .inner-image {
+    width: 25%;
+    margin-right: 2%;
+}
+
+.content .content-left .section-four .inner-box .inner-content {
+    width: 73%;
+}
+
+.content .content-left .section-four .inner-box .inner-image img {
+    width: 100%;
+    aspect-ratio: 5/3;
+}
+
+/* end section-four */
+
 /* content-right */
 .content .content-right {
-    background-color: blue;
-    height: 5000px;
     width: 39.5%;
 }
+
+.content .content-right .inner-image:hover img {
+    transform: scale(1.1);
+    transition: 0.6;
+    /* hiệu ứng phóng to chậm lại */
+    transition-duration: 0.8s;
+}
+
+.content .content-right .inner-image:hover {
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.content .content-right .inner-box:hover .inner-content h2,
+.content .content-right .inner-box:hover .inner-content h3 {
+    color: var(--color-one);
+    cursor: pointer;
+}
+
+.content .content-right .inner-content .inner-link .item {
+    margin-right: 15px;
+}
+
+.content .content-right .inner-content .inner-link {
+    display: flex;
+    align-items: center;
+}
+
+.content .content-right .inner-link img {
+    height: 20px;
+}
+
+.content .content-right .inner-box .inner-image img {
+    /* giúp ảnh co giãn theo đúng tỉ lệ width height đã set để không bị vỡ */
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.content .content-right .inner-clock {
+    visibility: hidden;
+}
+
+.content .content-right .inner-box:hover .inner-image {
+    cursor: pointer;
+}
+
+.content .content-right .inner-content .inner-link .item {
+    color: var(--color-text2);
+}
+
+.content .content-right .inner-box:hover .inner-clock {
+    visibility: visible;
+}
+
+.content .content-right .inner-wrap .inner-box .inner-link a:hover {
+    color: var(--color-one);
+    cursor: pointer;
+}
+
+.content .content-right .inner-box {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+
+
+
+.content .content-right .section-one .inner-box .inner-image {
+    width: 15%;
+    margin-right: 2%;
+}
+
+.content .content-right .section-one .inner-box .inner-content {
+    width: 83%;
+}
+
+/* .content .content-right .section-one .inner-box .inner-image img {
+} */
+
+/* section-one */
+
+/* end section-one */
+
+
 
 /* end content-right */
 /* End Content */

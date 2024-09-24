@@ -24,8 +24,6 @@ body {
     /* do chiều rộng được set cứng nên có thể dùng cái này để container căn giữa theo chiều ngang */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 35px;
-    padding-right: 35px;
 }
 
 ul {
@@ -57,6 +55,9 @@ img {
     padding-bottom: 10px;
 }
 
+h3 {
+    margin: 0;
+}
 
 /* Nếu độ rộng của màn hình nhỏ hơn hoặc bằng 1200px, phần tử với lớp container sẽ có max-width là 960px. */
 @media (max-width: 1200px) {

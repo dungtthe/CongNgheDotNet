@@ -214,6 +214,7 @@
 
 .content .content-left .inner-image:hover {
     overflow: hidden;
+    border-radius: 4px;
 }
 
 .content .content-left .inner-box:hover .inner-content h2,
@@ -237,7 +238,6 @@
 
 .content .content-left .inner-box .inner-image img {
     width: 100%;
-    height: 100%;
     /* giúp ảnh co giãn theo đúng tỉ lệ width height đã set để không bị vỡ */
     object-fit: cover;
 }
@@ -271,7 +271,6 @@
 }
 
 .content .content-left .section-one .inner-image img {
-    width: 100%;
     aspect-ratio: 9/5;
 }
 
@@ -309,15 +308,38 @@
 
 .content .content-left .section-two .inner-box {
     width: calc(100%/3 - 10px);
-    height: 100%;
-    /* tỉ lệ width / height */
-    /* cái này chỉ nên dùng khi width hoặc height là 100% */
-    aspect-ratio: 3/2;
-    /* để tí có thể dùng inner-content với absolute */
-    position: relative;
 }
 
+
 /* end section-two */
+
+/* section-three */
+.content .content-left .section-three {
+    margin-top: 20px;
+}
+
+.content .content-left .section-three .inner-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.content .content-left .section-three .inner-box .inner-image {
+    margin-right: 2%;
+    width: 30%;
+}
+
+.content .content-left .section-three .inner-box .inner-content {
+    width: 68%;
+}
+
+.content .content-left .section-three .inner-box .inner-image img {
+    width: 100%;
+    aspect-ratio: 5/3;
+}
+
+/* end section-three */
 
 /* content-right */
 .content .content-right {

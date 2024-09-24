@@ -193,12 +193,74 @@
     gap: 1.5%;
 }
 
+.content .inner-box .inner-title {
+    font-weight: 500;
+    font-size: 18px;
+}
+
 
 /* content-left */
 .content .content-left {
     /* background-color: red; */
-    height: 500px;
     width: 59%;
+}
+
+.content .content-left .inner-image:hover img {
+    transform: scale(1.1);
+    transition: 0.6;
+    /* hiệu ứng phóng to chậm lại */
+    transition-duration: 0.8s;
+}
+
+.content .content-left .inner-image:hover {
+    overflow: hidden;
+}
+
+.content .content-left .inner-box:hover .inner-content h2,
+.content .content-left .inner-box:hover .inner-content h3 {
+    color: var(--color-one);
+    cursor: pointer;
+}
+
+.content .content-left .inner-content .inner-link .item {
+    margin-right: 15px;
+}
+
+.content .content-left .inner-content .inner-link {
+    display: flex;
+    align-items: center;
+}
+
+.content .content-left .inner-link img {
+    height: 20px;
+}
+
+.content .content-left .inner-box .inner-image img {
+    width: 100%;
+    height: 100%;
+    /* giúp ảnh co giãn theo đúng tỉ lệ width height đã set để không bị vỡ */
+    object-fit: cover;
+}
+
+.content .content-left .inner-clock {
+    visibility: hidden;
+}
+
+.content .content-left .inner-box:hover .inner-image {
+    cursor: pointer;
+}
+
+.content .content-left .inner-content .inner-link .item {
+    color: var(--color-text2);
+}
+
+.content .content-left .inner-box:hover .inner-clock {
+    visibility: visible;
+}
+
+.content .content-left .inner-wrap .inner-box .inner-link a:hover {
+    color: var(--color-one);
+    cursor: pointer;
 }
 
 
@@ -209,20 +271,8 @@
 }
 
 .content .content-left .section-one .inner-image img {
-    border-radius: 4px;
     width: 100%;
     aspect-ratio: 9/5;
-}
-
-.content .content-left .section-one .inner-image:hover img {
-    transform: scale(1.1);
-    transition: 0.6;
-    /* hiệu ứng phóng to chậm lại */
-    transition-duration: 0.8s;
-}
-
-.content .content-left .section-one .inner-image:hover {
-    overflow: hidden;
 }
 
 .content .content-left .section-one .inner-content .inner-title {
@@ -230,63 +280,51 @@
     font-weight: 500;
 }
 
-.content .content-left .section-one .inner-content .inner-link img {
-    height: 24px;
-}
-
 .content .content-left .section-one .inner-content .inner-link {
-    display: flex;
-    align-items: center;
     margin-top: -27px;
 }
 
-.content .content-left .section-one .inner-content .inner-link .item {
-    margin-right: 15px;
-}
-
-.content .content-left .section-one .inner-content .inner-link .item {
-    color: var(--color-text2);
-}
-
-.content .content-left .section-one .inner-clock {
-    visibility: hidden;
-}
-
-.content .content-left .section-one:hover .inner-image {
-    cursor: pointer;
-}
-
-.content .content-left .section-one:hover .inner-content h2 {
-    color: var(--color-one);
-    cursor: pointer;
-}
-
-.content .content-left .section-one:hover .inner-clock {
-    visibility: visible;
-}
-
-.content .content-left .section-one .inner-wrap .inner-link a:hover {
-    color: var(--color-one);
-    cursor: pointer;
-}
 
 .content .content-left .section-one .inner-wrap .inner-link img:hover {
     cursor: pointer;
 }
 
+.content .content-left .section-one .inner-link img {
+    height: 27px;
+}
+
 /* end section-one */
 
-/* end content-left */
+/* section-two */
+.content .content-left .section-two {
+    margin-top: 10px;
+}
 
+.content .content-left .section-two .inner-wrap {
+    display: flex;
+    /* gap: 2%; */
+    justify-content: space-between;
+}
+
+
+.content .content-left .section-two .inner-box {
+    width: calc(100%/3 - 10px);
+    height: 100%;
+    /* tỉ lệ width / height */
+    /* cái này chỉ nên dùng khi width hoặc height là 100% */
+    aspect-ratio: 3/2;
+    /* để tí có thể dùng inner-content với absolute */
+    position: relative;
+}
+
+/* end section-two */
 
 /* content-right */
 .content .content-right {
     background-color: blue;
-    height: 500px;
+    height: 5000px;
     width: 39.5%;
 }
-
-
 
 /* end content-right */
 /* End Content */

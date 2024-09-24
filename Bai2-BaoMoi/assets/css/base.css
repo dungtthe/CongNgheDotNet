@@ -47,6 +47,10 @@ a {
     box-sizing: border-box;
 }
 
+img {
+    border-radius: 5px;
+}
+
 /* Nếu độ rộng của màn hình nhỏ hơn hoặc bằng 1200px, phần tử với lớp container sẽ có max-width là 960px. */
 @media (max-width: 1200px) {
     .container {

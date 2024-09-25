@@ -55,8 +55,18 @@ img {
     padding-bottom: 10px;
 }
 
+.underline-4 {
+    width: 100%;
+    border-bottom: 4px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
 h3 {
     margin: 0;
+}
+
+.pos-relative {
+    position: relative;
 }
 
 /* Nếu độ rộng của màn hình nhỏ hơn hoặc bằng 1200px, phần tử với lớp container sẽ có max-width là 960px. */

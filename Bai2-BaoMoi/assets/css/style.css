@@ -116,11 +116,15 @@
     border-radius: 4px;
 }
 
-.header .header-menu .inner-menu ul li:nth-child(2) a::after {
+.header .header-menu .inner-menu ul .news a {
+    position: relative;
+}
+
+.header .header-menu .inner-menu ul .news a::after {
     content: '18';
     position: absolute;
-    top: -8px;
-    right: -15px;
+    top: 5px;
+    right: 20px;
     background-color: red;
     color: white;
     font-size: 10px;
@@ -447,9 +451,6 @@
     align-items: flex-start;
 }
 
-
-
-
 .content .content-right .section-one .inner-box .inner-image {
     width: 15%;
     margin-right: 2%;
@@ -457,6 +458,10 @@
 
 .content .content-right .section-one .inner-box .inner-content {
     width: 83%;
+}
+
+.content .content-right .section-one .inner-box {
+    padding-top: 10px;
 }
 
 /* .content .content-right .section-one .inner-box .inner-image img {

@@ -393,6 +393,10 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.content .content-left .section-four .outer-box .inner-content {
+    opacity: 0.2;
+}
+
 .content .content-left .section-four .outer-box .inner-image img {
     opacity: 0.2;
 }
@@ -599,6 +603,184 @@
 
 /* end section-two */
 
+/* section-three */
+.content .content-right .section-three {
+    margin-top: 15px;
+}
 
+.content .content-right .section-three .inner-wrap {
+    background-color: var(--color-text1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.content .content-right .section-three .inner-wrap .inner-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content .content-right .section-three .inner-wrap .inner-image img {
+    width: 100%;
+    aspect-ratio: 10/9;
+}
+
+.content .content-right .section-three .inner-wrap .inner-image img:hover {
+    transform: none;
+    transition: none;
+}
+
+/* end section-three */
+
+
+/* section-four */
+.content .content-right .section-four {
+    margin-top: 15px;
+}
+
+.content .content-right .section-four .inner-wrap {
+    background-color: var(--color-text1);
+    padding: 15px 30px 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.content .content-right .section-four .inner-author {
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .content-right .section-four .inner-author .inner-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    font-weight: 900;
+    font-size: 36px;
+}
+
+.content .content-right .section-four .inner-author .inner-title {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.content .content-right .section-four .inner-author .inner-logo img {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.content .content-right .section-four .inner-content .inner-other {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .content-right .section-four .inner-content {
+    border-top: 3px solid #DA211C;
+    border-right: 1px solid #c5c4c4;
+    border-left: 1px solid #c5c4c4;
+    border-bottom: 1px solid #c5c4c4;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content .content-right .section-four .inner-content .inner-box {
+    border-bottom: 1px dashed #c5c4c4;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+
+.content .content-right .section-four .inner-content .inner-box .inner-image {
+    width: 42%;
+    margin-right: 3%;
+}
+
+.content .content-right .section-four .inner-content .inner-box .inner-image img {
+    width: 100%;
+    aspect-ratio: 7/4;
+}
+
+.content .content-right .section-four .inner-content .inner-box .inner-desc {
+    width: 55%;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.content .content-right .section-four .inner-content .inner-other a {
+    padding-bottom: 10px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.content .content-right .section-four .inner-content .inner-other a::before {
+    content: '■';
+    color: rgb(185, 32, 32);
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(3px);
+}
+
+/* end section-four */
+
+
+
+/* section-five */
+.content .content-right .section-five {
+    background-image: url("/assets/images/im50.png");
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 18px;
+}
+
+.content .content-right .section-five .inner-author {
+    display: flex;
+    font-size: 24px;
+    color: rgb(219 86 43/1);
+}
+
+.content .content-right .section-five .inner-author .inner-logo {
+    margin-right: 10px;
+}
+
+.content .content-right .section-five .inner-choice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-text1);
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 36px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.content .content-right .section-five .inner-box .inner-image {
+    width: 15%;
+    margin-right: 2%;
+}
+
+.content .content-right .section-five .inner-box .inner-content {
+    width: 83%;
+}
+
+.content .content-right .section-five .inner-box {
+    padding-top: 10px;
+}
+
+
+
+/* end section-five */
 /* end content-right */
 /* End Content */

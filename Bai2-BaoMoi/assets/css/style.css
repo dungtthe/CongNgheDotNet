@@ -78,6 +78,34 @@
 }
 
 /* end phần icon */
+
+@media (max-width: 992px) {
+
+    .header .header-top .inner-search {
+        height: 30px;
+        width: 400px;
+    }
+
+    .header .header-top .inner-logo img {
+        width: 90px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .header-top .inner-search {
+        width: 300px;
+        margin-left: -70px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header .header-top .inner-search {
+        width: 100px;
+        margin-left: -70px;
+    }
+}
+
 /* end header-top */
 
 
@@ -177,6 +205,40 @@
 
 .header .header-menu .inner-tag {
     margin-left: -180px;
+}
+
+
+@media (max-width: 1200px) {
+    .header .header-menu .inner-menu ul li a {
+        width: 70px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .header .header-menu .inner-menu ul .news a::after {
+        top: 0px;
+        right: 12px;
+    }
+
+    .header .header-menu .inner-tag ul li a {
+        font-size: 12px;
+    }
+
+    .header .header-menu .inner-menu {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header .header-menu .inner-tag {
+        margin-left: -220px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .header .header-menu .inner-tag {
+        visibility: hidden;
+    }
 }
 
 /* end header-menu */

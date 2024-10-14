@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=DESKTOP-34OSP4G\SQLEXPRESS;Initial Catalog=QLBanVaLi;Integrated Security=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

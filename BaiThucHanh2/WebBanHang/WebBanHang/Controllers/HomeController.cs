@@ -40,6 +40,21 @@ namespace WebBanHang.Controllers
 
 
 
+
+
+        public IActionResult ChiTietSanPham(string maSp)
+        {
+            var sanPham = db.TDanhMucSps.SingleOrDefault(x => x.MaSp == maSp);
+            var anhSanPham = db.TAnhSps.Where(x => x.MaSp == maSp).ToList();
+            ViewBag.anhSanPham = anhSanPham;
+            return View(sanPham);
+        }
+
+
+
+
+
+
         public IActionResult Privacy()
         {
             return View();

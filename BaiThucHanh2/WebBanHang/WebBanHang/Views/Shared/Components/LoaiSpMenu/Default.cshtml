@@ -9,40 +9,61 @@
         <ul>
             @foreach (var item in Model)
             {
-                <li><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai">@item.Loai</a></li>
+                @* <li><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai">@item.Loai</a></li> *@
+           
+                var getUrl = "https://localhost:7066/api/productapi/" + item.MaLoai;
+                <li><a style="cursor:pointer" onclick="showProductByCategory('@getUrl')">@item.Loai</a></li>
             }
 
         </ul>
     </div>
 </div>
-<div class="col-lg-9">
-    <div class="hero__search">
-        <div class="hero__search__form">
-            <form action="#">
-                <div class="hero__search__categories">
-                    All Categories
-                    <span class="arrow_carrot-down"></span>
-                </div>
-                <input type="text" placeholder="What do yo u need?">
-                <button type="submit" class="site-btn">SEARCH</button>
-            </form>
-        </div>
-        <div class="hero__search__phone">
-            <div class="hero__search__phone__icon">
-                <i class="fa fa-phone"></i>
-            </div>
-            <div class="hero__search__phone__text">
-                <h5>+65 11.188.888</h5>
-                <span>support 24/7 time</span>
-            </div>
-        </div>
-    </div>
-    <div class="hero__item set-bg" data-setbg="../LayoutOgani/img/hero/banner.jpg">
-        <div class="hero__text">
-            <span>FRUIT FRESH</span>
-            <h2>Vegetable <br />100% Organic</h2>
-            <p>Free Pickup and Delivery Available</p>
-            <a href="#" class="primary-btn">SHOP NOW</a>
-        </div>
-    </div>
-</div>
+
+
+<script>
+    function showProductByCategory(getUrl) {
+        var str = '';
+        $.ajax({
+            type: 'GET',
+            url: getUrl,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (key, val) {
+                    str += '<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">';
+                    str += '<div class="featured__item">';
+
+                     var linkImage = "../ProductsImages/Images/" + $.trim(val.anhDaiDien);
+
+                    str += '<div class="featured__item__pic set-bg" data-setbg="';
+                    str += linkImage;
+                    str += '" style="background-image: url(&quot;';
+                    str += linkImage;
+                    str += '&quot;);">';
+
+                    str += '<ul class="featured__item__pic__hover">';
+                    str += '<li><a href="#"><i class="fa fa-heart"></i></a></li>';
+                    str += '<li><a href="#"><i class="fa fa-retweet"></i></a></li>';
+                    str += '<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>';
+                    str += '</ul></div>';
+
+                    str += '<div class="featured__item__text">';
+                    str += '<h6><a href="/Home/ChiTietSanPham?maSp=';
+                    str += $.trim(val.maSp);
+                    str += '">';
+                    str += $.trim(val.tenSp);
+                    str += '</a></h6><h5>';
+                    str += val.giaNhoNhat.toString();
+                    str += '</h5></div></div></div>';
+                });
+
+                $("#displayProducts").html(str);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+
+</script>

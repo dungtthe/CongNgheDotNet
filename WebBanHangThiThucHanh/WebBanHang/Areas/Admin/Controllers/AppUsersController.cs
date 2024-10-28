@@ -13,24 +13,24 @@ using WebBanHang.ViewModel;
 
 namespace WebBanHang.Areas.Admin.Controllers
 {
-	[Area("Admin")]
-	[AdminAuthorizationFilter]
-	[Route("admin/user")]
-	public class AppUsersController : Controller
-	{
-		private readonly WebDbContext _context;
+    [Area("Admin")]
+    [AdminAuthorizationFilter]
+    [Route("admin/editUserVM")]
+    public class AppUsersController : Controller
+    {
+        private readonly WebDbContext _context;
 
-		public AppUsersController(WebDbContext context)
-		{
-			_context = context;
-		}
+        public AppUsersController(WebDbContext context)
+        {
+            _context = context;
+        }
 
-		[HttpGet("")]
-		public async Task<IActionResult> Index()
-		{
-			var webDbContext = _context.AppUsers.Include(a => a.Role);
-			return View(await webDbContext.ToListAsync());
-		}
+        [HttpGet("")]
+        public async Task<IActionResult> Index()
+        {
+            var webDbContext = _context.AppUsers.Include(a => a.Role);
+            return View(await webDbContext.ToListAsync());
+        }
 
         // GET: Admin/AppUsers/Details/5
         [HttpGet("details")]
@@ -54,11 +54,11 @@ namespace WebBanHang.Areas.Admin.Controllers
 
         // GET: Admin/AppUsers/Create
         [HttpGet("create")]
-		public IActionResult Create()
-		{
-			ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName");
-			return View();
-		}
+        public IActionResult Create()
+        {
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName");
+            return View();
+        }
 
         // POST: Admin/AppUsers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -101,7 +101,7 @@ namespace WebBanHang.Areas.Admin.Controllers
 
 
         // GET: Admin/AppUsers/Edit/5
-        [HttpGet("Edit")]
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.AppUsers == null)
@@ -109,48 +109,67 @@ namespace WebBanHang.Areas.Admin.Controllers
                 return NotFound();
             }
 
-			var user = await _context.Products.FindAsync(id);
-			if (user == null)
-			{
-				return NotFound();
-			}
-			return View(user);
-		}
+            var user = _context.AppUsers.Include(p => p.Role).FirstOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", user.Role.RoleName);
 
-		// POST: Admin/Product/Edit/5
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost("edit")]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserName,Password,PhoneNumber,IsLock,RoleId")] AppUser user)
-		{
-			if (id != user.Id)
-			{
-				return NotFound();
-			}
+            return View(user);
+        }
 
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					_context.Update(user);
-					await _context.SaveChangesAsync();
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					if (!AppUserExists(user.Id))
-					{
-						return NotFound();
-					}
-					else
-					{
-						throw;
-					}
-				}
-				return RedirectToAction(nameof(Index));
-			}
-			return View(user);
-		}
+        [HttpPost("edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Name,UserName,Password,PhoneNumber,IsLock,RoleId,Email")] EditAppUserViewModel editUserVM)
+        {
+            var appUser = _context.AppUsers.Include(p => p.Role).FirstOrDefault(u => u.Id == id);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var checkUser = _context.AppUsers
+                    .Any(user => (user.UserName == editUserVM.UserName || user.Email == editUserVM.Email) && user.Id != id);
+
+                if (!checkUser)
+                {
+                    appUser.Name = editUserVM.Name;
+                    appUser.UserName = editUserVM.UserName;
+                    appUser.Email = editUserVM.Email;
+                    appUser.Password = editUserVM.Password;
+                    appUser.PhoneNumber = editUserVM.PhoneNumber;
+                    appUser.RoleId = editUserVM.RoleId;
+                    appUser.IsLock = editUserVM.IsLock;
+
+                    _context.Update(appUser);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Tên tài khoản hoặc email đã tồn tại.");
+                }
+            }
+
+            var model = new AppUser
+            {
+                Id = id,
+                Name = editUserVM.Name,
+                UserName = editUserVM.UserName,
+                Email = editUserVM.Email,
+                Password = editUserVM.Password,
+                PhoneNumber = editUserVM.PhoneNumber,
+                RoleId = editUserVM.RoleId,
+                IsLock = editUserVM.IsLock
+            };
+
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", appUser.RoleId);
+            return View(model);
+        }
+
 
         [HttpGet("delete")]
         public async Task<IActionResult> Delete(int? id)

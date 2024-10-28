@@ -37,13 +37,22 @@ namespace WebBanHang.Controllers
             {
                 SessionHelpers.SetUserId(HttpContext, u.Id);
                 SessionHelpers.SetRoleName(HttpContext, u.Role.RoleName);
-                if (u.Role.RoleName == RolesConst.Admin)
+
+                if (!u.IsLock)
                 {
-                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    if (u.Role.RoleName == RolesConst.Admin)
+                    {
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home", new { area = "Customer" });
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home", new { area = "Customer" });
+                    ErrorMessage = "Tài khoản của bạn đang bị khóa";
+                    return RedirectToAction("Login");
                 }
             }
             ErrorMessage = "Thông tin đăng nhập không đúng";

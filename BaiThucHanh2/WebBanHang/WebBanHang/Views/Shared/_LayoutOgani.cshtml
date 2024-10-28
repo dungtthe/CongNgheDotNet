@@ -54,7 +54,12 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                @* <a href="#"><i class="fa fa-user"></i> Login</a> *@
+                <a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i> Logout</a>
+
+
+
+
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -120,7 +125,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i> Logout</a>
                             </div>
                         </div>
                     </div>
@@ -173,7 +178,7 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-               @await Component.InvokeAsync("LoaiSpMenu");
+                @await Component.InvokeAsync("LoaiSpMenu");
             </div>
         </div>
     </section>
@@ -234,7 +239,13 @@
             </div>
         </div>
     </section>
-    @RenderBody();
+
+    <div class="container">
+        <div class="row" id="displayProducts">
+            @RenderBody();
+        </div>
+    </div>
+
     <!-- Featured Section End -->
     <!-- Blog Section Begin -->
     <section class="from-blog spad">

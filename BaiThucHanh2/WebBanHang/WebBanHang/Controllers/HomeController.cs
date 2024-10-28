@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using WebBanHang.Models;
+using WebBanHang.Models.Authentication;
 using X.PagedList;
 
 namespace WebBanHang.Controllers
@@ -15,6 +16,8 @@ namespace WebBanHang.Controllers
             _logger = logger;
         }
 
+
+        [Authentication]
         public IActionResult Index(int ?page)
         {
             int pageSize = 8;
@@ -26,6 +29,8 @@ namespace WebBanHang.Controllers
             return View(lst);
         }
 
+
+        [Authentication]
         public IActionResult SanPhamTheoLoai(string maloai, int? page)
         {
             int pageSize = 8;
@@ -41,14 +46,20 @@ namespace WebBanHang.Controllers
 
 
 
-
-        public IActionResult ChiTietSanPham(string maSp)
+        [Authentication]
+        public async Task<IActionResult> ChiTietSanPham(string maSp)
         {
-            var sanPham = db.TDanhMucSps.SingleOrDefault(x => x.MaSp == maSp);
-            var anhSanPham = db.TAnhSps.Where(x => x.MaSp == maSp).ToList();
+            var sanPham = await db.TDanhMucSps.FirstOrDefaultAsync(x => x.MaSp == maSp);
+            if (sanPham == null)
+            {
+                return NotFound(); 
+            }
+
+            var anhSanPham = await db.TAnhSps.Where(x => x.MaSp == maSp).ToListAsync();
             ViewBag.anhSanPham = anhSanPham;
             return View(sanPham);
         }
+
 
 
 

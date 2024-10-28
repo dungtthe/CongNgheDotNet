@@ -14,10 +14,11 @@ namespace WebBanHang
             builder.Services.AddControllersWithViews();
 
             //var connectionString = builder.Configuration.GetConnectionString("QLBanVaLiContext");
-            var connectionString = "Data Source=DESKTOP-34OSP4G\\SQLEXPRESS;Initial Catalog=QLBanVaLi;Integrated Security=True;Trust Server Certificate=True";
+           // var connectionString = "Data Source=DESKTOP-34OSP4G\\SQLEXPRESS;Initial Catalog=QLBanVaLi;Integrated Security=True;Trust Server Certificate=True";
+            var connectionString = "Data Source=DESKTOP-S1L6AP3;Initial Catalog=QLBanVaLi;Integrated Security=True;Trust Server Certificate=True";
             builder.Services.AddDbContext<QLBanVaLiContext>(x => x.UseSqlServer(connectionString));
             builder.Services.AddScoped<ILoaiSpRepository, LoaiSpRepository>();
-
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -36,9 +37,11 @@ namespace WebBanHang
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Access}/{action=Login}/{id?}");
 
             app.Run();
         }

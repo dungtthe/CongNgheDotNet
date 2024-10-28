@@ -1,0 +1,102 @@
+﻿@model WebBanHang.Models.Product
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    string[] listImg = Model.Images != null
+       ? JsonConvert.DeserializeObject<string[]>(Model.Images)
+       : new string[] { "no_img.png" };
+
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Images" class="control-label"></label>
+                <br />
+                <div class="d-flex flex-wrap">
+                    @foreach (var im in listImg)
+                    {
+                        <div class="p-2">
+
+                            @if (im != "no_img.png")
+                            {
+                                <div class="image-container-delete">
+                                    <img src="~/images/products/@im" alt="Product Image" class="img-thumbnail rounded shadow-sm img-fluid" style="width: 100px; height: 100px; object-fit: cover;" />
+                                    <div class="overlay" onclick="deleteImage('@im')">Xóa</div>
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="~/images/products/@im" alt="Product Image" class="img-thumbnail rounded shadow-sm img-fluid" style="width: 100px; height: 100px; object-fit: cover;" />
+                            }
+                        </div>
+                    }
+                </div>
+                <br />
+                <a asp-area="Admin" asp-controller="Product" asp-action="UploadPhoto" asp-route-id="@Model.Id" class="btn" style="background: green !important; color: white !important;">Upload ảnh</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script>
+    function deleteImage(imageName) {
+        if (confirm("Bạn có chắc chắn muốn xóa ảnh này không?")) {
+            $.ajax({
+                url: '/admin/product/deleteimage',
+                type: 'DELETE',
+                data: JSON.stringify({ fileName: imageName, productId: @Model.Id }),
+                contentType: 'application/json',
+                success: function (response) {
+                    alert("Ảnh đã được xóa thành công.");
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert("Có lỗi xảy ra khi xóa ảnh: " + error);
+                }
+            });
+        }
+    }
+</script>
